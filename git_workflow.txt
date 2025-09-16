@@ -1,0 +1,17 @@
+Git Workflow for User List Feature
+
+1. Created new branch:
+   git checkout -b feature/user-list
+
+2. Added new files:
+   git add users.php git_workflow.txt
+
+3. Committed changes:
+   git commit -m "feat: Add numbered user list from database"
+
+4. Switched to main and merged:
+   git checkout main
+   git merge feature/user-list
+
+5. Pushed to remote:
+   git push origin main
