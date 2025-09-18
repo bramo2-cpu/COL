@@ -1,23 +1,15 @@
 <?php
 
-require 'plugins/PHPMailer/vendor/autoload.php';
-require 'conf.php';
+// Load Composer's autoloader (installs PHPMailer and autoloads it)
+require __DIR__ . '/vendor/autoload.php';
 
-// autoload classes from specified directories
-$directory = ["Forms", "Globals", "Layouts"];
+// Import PHPMailer classes into global namespace
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
-spl_autoload_register(function ($class_name) use ($directory){
-    foreach ($directory as $dir) {
-        $file = __DIR__ . "/$dir/" . $class_name . '.php';
-        if (file_exists($file)) {
-            require_once $file;
-            return;
-        }
-    }
-});
+// Create a new PHPMailer instance
+$mail = new PHPMailer(true); // Enable exceptions
 
-// create an instance of the class
-
-$objMail = new mail();
-$objlayouts = new layouts($conf);
-$objforms = new forms();
+// Optional: Test output to confirm it works
+echo "✅ PHPMailer loaded successfully!";

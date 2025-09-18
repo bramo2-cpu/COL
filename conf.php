@@ -9,7 +9,8 @@ $conf['site_lang'] = "en";
 
 // Database constants
 $conf['db_type'] = "pdo";
-$conf['db_host'] = "localhost";
+$conf['db_host'] = '127.0.0.1';
+
 $conf['db_user'] = "root";
 $conf['db_pass'] = "";
 $conf['db_name'] = "col";

@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 // Check if the form was submitted using POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $email = $_POST['email'];
+    $email = $_POST['email'] ?? ''; // ← Added null coalescing for safety
 
     // Validate email
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -17,16 +17,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail = new PHPMailer(true); // Enable exceptions
 
         try {
-           
-            $mail->SMTPDebug = 2; // Verbose debug output
-            $mail->Debugoutput = 'html';
+            // Optional: Enable debug only during development
+            // $mail->SMTPDebug = 2;
+            // $mail->Debugoutput = 'html';
 
             // Server settings — GMAIL
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'anekeabramwel@gmail.com';  
-            $mail->Password   = 'qrdb ejuo gktz enns';      
+            $mail->Username   = 'anekeabramwel@gmail.com';
+            $mail->Password   = 'qrdb ejuo gktz enns'; // ← App Password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port       = 587;
 
@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <p>Thank you for joining our application. We're excited to have you on board!</p>
                 <p>Best regards,<br>The Task App Team</p>
             ";
-            $mail->AltBody = 'Thank you for joining our application. We\'re excited to have you on board! Best regards, The Task App Team';
+            $mail->AltBody = "Thank you for joining our application. We're excited to have you on board! Best regards, The Task App Team";
 
             // Send email
             $mail->send();
@@ -58,6 +58,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 } else {
-    echo "<h3> This script must be accessed via a form submission (POST request).</h3>";
+    echo "<h3>ℹ️ This script must be accessed via a form submission (POST request).</h3>";
 }
-?>
