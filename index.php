@@ -7,3 +7,4 @@ require 'ClassAutoLoad.php';
 $layouts->heading($conf);
 $forms->signup();
 $layouts->footer($conf);
+

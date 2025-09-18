@@ -9,7 +9,7 @@ class forms{
     public function signup(){
         ?>
         <h2>Sign Up Form</h2>
-        <form action='form.php' method='post'>
+        <form action='signup.php' method='post'>
             Name: <input type='text' name='name'><br><br>
             Email: <input type='email' name='email'><br><br>
             Password: <input type='password' name='password'><br><br>
@@ -21,10 +21,10 @@ class forms{
     public function login(){
         ?>
         <h2>Login Form</h2>
-        <form action='form.php' method='post'>
+        <form action='sigmin.php' method='post'>
             Email: <input type='email' name='email'><br><br>
             Password: <input type='password' name='password'><br><br>
-            <?php $this->submit_button('Login'); ?> <a>Not a member? <a href='index.php'>Sign up here</a></a>
+            <?php $this->submit_button('Login'); ?> <a>Not a member? <a href='signup.php'>Sign up here</a></a>
         </form>
         <?php
     }
